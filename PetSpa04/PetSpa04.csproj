@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PetSpa.Infrastructure\PetSpa.Infrastructure.csproj" />
+    <ProjectReference Include="..\PetSpa04.Core\PetSpa04.Core.csproj" />
   </ItemGroup>
 
 </Project>
