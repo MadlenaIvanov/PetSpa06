@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Extentions\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PetSpa04.Core\PetSpa04.Core.csproj" />
   </ItemGroup>
 
