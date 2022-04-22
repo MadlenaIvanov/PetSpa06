@@ -24,6 +24,10 @@ namespace PetSpa04.Core.Models
         [Display(Name = "Pick a service")]
         public int ServiceId { get; init; }
 
+        [Display(Name = "Pick the type of pet")]
+        public int PetTypeId { get; init; }
+
         public IEnumerable<ServiceTypesViewModel>? Services { get; set; }
+        public IEnumerable<ServiceTypesViewModel>? TypeOfPet { get; set; }
     }
 }

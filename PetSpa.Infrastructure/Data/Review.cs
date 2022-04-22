@@ -32,5 +32,8 @@ namespace PetSpa.Infrastructure.Data
         //-
         public int ServiceId { get; set; }
         public Service Service { get; init; }
+
+        public int PetTypeId { get; set; }
+        public PetType PetType { get; init; }
     }
 }

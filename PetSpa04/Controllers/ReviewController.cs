@@ -14,7 +14,10 @@ namespace PetSpa04.Controllers
         }
         public IActionResult Add() => View(new AddReviewFormModel
         {
-            Services = this.GetServiceTypes()
+            Services = this.GetServiceTypes(),
+            TypeOfPet = this.GetPetTypes()
+
+
         });
 
 
@@ -42,10 +45,16 @@ namespace PetSpa04.Controllers
                 this.ModelState.AddModelError(nameof(review.ServiceId), "Service does not exist!");
             }
 
+            if (!this.data.PetTypes.Any(r => r.Id == review.PetTypeId))
+            {
+                this.ModelState.AddModelError(nameof(review.PetTypeId), "Pet type does not exist!");
+            }
+
 
             if (!ModelState.IsValid)
             {
                 review.Services = this.GetServiceTypes();
+                review.TypeOfPet = this.GetPetTypes();
 
                 return View(review);
             }
@@ -55,7 +64,8 @@ namespace PetSpa04.Controllers
                 Title = review.Title,
                 Description = review.Description,
                 ImageUrl = review.ImageUrl,
-                ServiceId = review.ServiceId
+                ServiceId = review.ServiceId,
+                PetTypeId = review.PetTypeId
             };
 
             this.data.Reviews.Add(reviewEntry);
@@ -67,6 +77,16 @@ namespace PetSpa04.Controllers
         private IEnumerable<ServiceTypesViewModel> GetServiceTypes()
             => this.data
             .Services
+            .Select(s => new ServiceTypesViewModel
+            {
+                Id = s.Id,
+                Name = s.Name
+            })
+            .ToList();
+
+        private IEnumerable<ServiceTypesViewModel> GetPetTypes()
+            => this.data
+            .PetTypes
             .Select(s => new ServiceTypesViewModel
             {
                 Id = s.Id,
