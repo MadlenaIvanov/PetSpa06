@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IndexViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -11,4 +13,14 @@
 <div class="text-center">
     <h1 class="display-4">Welcome to PetSpa</h1>
     <p>Take care of your pet's needs all in one place. PetSpa offers everything from grooming to training and complete veterinary care.</p>
+</div>
+
+
+<div class="mb-5"></div>
+<div class="jumbotron">
+    <div class="row">
+        <h4 class="col-md-12 text-center">
+            We have @Model.TotalReviews Certified Reviews and our @Model.TotalUsers Users have booked @Model.TotalAppointments Appointments through our website
+        </h4>
+    </div>
 </div>

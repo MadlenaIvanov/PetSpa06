@@ -17,7 +17,7 @@ namespace PetSpa04.Controllers
         public IActionResult AllService()
         {
             var services = this.data.Services
-                .OrderByDescending(s => s.Id)
+                .OrderBy(s => s.Id)
                 .Select(s => new ServiceListingViewModel
                 {
                     Id = s.Id,

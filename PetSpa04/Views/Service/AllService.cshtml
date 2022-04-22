@@ -1,16 +1,18 @@
 ﻿@model IEnumerable<ServiceListingViewModel>
 
-    
+
 <div class="row">
+
     @foreach (var service in Model)
     {
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 30rem;">
             <img src="@service.ImageUrl" class="card-img-top" alt="@service.Name">
             <div class="card-body">
-                <h5 class="card-title">@service.Name</h5>
+                <h5 class="card-title text-center">@service.Name</h5>
                 <p class="card-text">@service.Description</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a asp-controller="Service" asp-action="Details" asp-route-id="@service.Id" class="btn btn-primary">Details about the @service.Name</a>
             </div>
         </div>
     }
+    <br />
 </div>

@@ -61,7 +61,7 @@ namespace PetSpa04.Controllers
             this.data.Reviews.Add(reviewEntry);
             this.data.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(nameof(All));
         }
 
         private IEnumerable<ServiceTypesViewModel> GetServiceTypes()
