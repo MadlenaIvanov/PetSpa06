@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ReviewListingViewModel>
+
+    
+<div class="row">
+    @foreach (var review in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="@review.ImageUrl" class="card-img-top" alt="@review.Title - @review.Service">
+            <div class="card-body">
+                <h5 class="card-title">@review.Title (@review.Service)</h5>
+                <p class="card-text">@review.Description</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+//if you want this card to lead somewhere
+<div class="row">
+
+    @foreach (var review in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="@review.ImageUrl" class="card-img-top" alt="@review.Title - @review.Service">
+            <div class="card-body">
+                <h5 class="card-title">@review.Title (@review.Service)</h5>
+                <p class="card-text">@review.Description</p>
+                <a asp-controller="Review" asp-action="Details" asp-route-id="@review.Id" class="btn btn-primary">View Review</a>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+

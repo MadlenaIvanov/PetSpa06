@@ -18,6 +18,22 @@ namespace PetSpa04.Controllers
         });
 
 
+        public IActionResult All()
+        {
+            var reviews = this.data.Reviews
+                .OrderByDescending(r => r.Id)
+                .Select(r => new ReviewListingViewModel
+                {
+                    Id = r.Id,
+                    Title = r.Title,
+                    Description = r.Description,
+                    ImageUrl = r.ImageUrl,
+                    Service = r.Service.Name
+                }).ToList();
+
+            return View(reviews);
+        }
+
         [HttpPost]
         public IActionResult Add(AddReviewFormModel review)
         {
