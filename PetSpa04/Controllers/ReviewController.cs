@@ -21,9 +21,27 @@ namespace PetSpa04.Controllers
         });
 
 
-        public IActionResult All()
+        public IActionResult All(string searchTerm)
         {
-            var reviews = this.data.Reviews
+            var reviewQuery = this.data.Reviews.AsQueryable();
+
+            //if (!string.IsNullOrWhiteSpace(searchTerm))
+            //{
+            //    reviewQuery = reviewQuery.Where(r =>
+            //        r.Description.ToLower().Contains(searchTerm.ToLower()) ||
+            //        r.Title.ToLower().Contains(searchTerm.ToLower()));
+            //}
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                reviewQuery = reviewQuery.Where(s => s.PetType.Name == searchTerm || s.Service.Name == searchTerm ||
+                s.Description.ToLower().Contains(searchTerm.ToLower()) ||
+                s.Title.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+
+
+            var reviews = reviewQuery
                 .OrderByDescending(r => r.Id)
                 .Select(r => new ReviewListingViewModel
                 {
@@ -34,7 +52,11 @@ namespace PetSpa04.Controllers
                     Service = r.Service.Name
                 }).ToList();
 
-            return View(reviews);
+            return View(new ReviewSearchViewModel
+            {
+                Reviews = reviews,
+                SearchTerm = searchTerm
+            });
         }
 
         [HttpPost]

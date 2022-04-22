@@ -1,12 +1,31 @@
-﻿@model IEnumerable<ReviewListingViewModel>
-
+﻿@*@model IEnumerable<ReviewListingViewModel>*@
+@model ReviewSearchViewModel
 
 <div class="row">
-    @foreach (var review in Model)
+
+    <form method="get">
+        <div class="form-group col-md-3">
+            <label asp-for="SearchTerm" class="form-label">Search</label>
+            <input asp-for="SearchTerm" class="form-control" placeholder="Dog, cat, grooming...">
+        </div>
+        <br/>
+
+        <div class="form-group col-md-3">          
+            <input type="submit" class="btn btn-primary" value="Search">
+@*            //if i wanna remove the button
+            <input type="submit" class="btn btn-primary d-none">*@
+
+        </div>
+        <br />
+    </form>
+</div>
+
+<div class="row">
+    @foreach (var review in Model.Reviews)
     {
         <div class="col-md-3">
             <div class="card mb-3">
-                <img src="@review.ImageUrl" class="card-img-top" alt="@review.Title - @review.Service">
+                <img src="@review.ImageUrl" class="card-img-top" width="250" height="300" alt="@review.Title - @review.Service">
                 <div class="card-body">
                     <h5 class="card-title">@review.Title </h5>
                     <p class="small text">@review.Service</p>
