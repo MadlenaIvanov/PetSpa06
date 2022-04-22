@@ -1,17 +1,21 @@
 ﻿@model IEnumerable<ReviewListingViewModel>
 
-    
+
 <div class="row">
     @foreach (var review in Model)
     {
-        <div class="card" style="width: 18rem;">
-            <img src="@review.ImageUrl" class="card-img-top" alt="@review.Title - @review.Service">
-            <div class="card-body">
-                <h5 class="card-title">@review.Title (@review.Service)</h5>
-                <p class="card-text">@review.Description</p>
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <img src="@review.ImageUrl" class="card-img-top" alt="@review.Title - @review.Service">
+                <div class="card-body">
+                    <h5 class="card-title">@review.Title </h5>
+                    <p class="small text">@review.Service</p>
+                    <p class="card-text">@review.Description</p>
+
+                </div>
             </div>
         </div>
-        <br />
+
     }
 </div>
 

@@ -41,7 +41,7 @@ namespace PetSpa04.Extentions
                 new Service { Name = "Grooming", Description = "Includes warm bath, fluff dry, brush/comb, ear cleaning/plucking, nail trim/file, brush teeth, full haircut, style, shave, or shampoo (flea and tick, hypoallergenic, detangling, or de-shedding).", ImageUrl = "https://www.dogtime.com/assets/uploads/2019/04/DogGrooming1-1280x720.jpg" },
                 new Service { Name = "Hospital", Description = "Veterinary hospital, your pets' first choice for veterinary care. Experienced team of qualified vets & nurses run to the standards and clinical excellence.", ImageUrl = "https://www.aaha.org/globalassets/05-pet-health-resources/ask-aaha/ask_aaha_vetvisits_teaser.jpg" },
                 new Service { Name = "Hotel", Description = "In our pet hotel, your dogs and cats will feel surrounded by lots of love and good attitude. They will have fun and will create new friendships. With us, your pet will feel the warmth of the home environment, they will feel at home.", ImageUrl = "https://cdn2.howtostartanllc.com/images/business-ideas/business-idea-images/pet-hotel.jpg" },
-                new Service { Name = "Spa", Description = "Pet Spa is a luxury spa for dog grooming and cat grooming. We have no breed restrictions and offer a wide range of services. Now offering fur colouring.", ImageUrl = "https://i.pinimg.com/originals/65/8d/56/658d5659cae4d6930940f9bfc7564df1.jpg" }
+                new Service { Name = "Spa", Description = "Pet Spa is a luxury spa for dog grooming and cat grooming. We have no breed restrictions and offer a wide range of services. Now offering fur colouring.", ImageUrl = "https://i.ibb.co/sV3JRxY/658d5659cae4d6930940f9bfc7564df1.jpg" }
             });
 
             data.SaveChanges();

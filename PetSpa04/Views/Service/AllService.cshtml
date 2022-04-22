@@ -5,12 +5,14 @@
 
     @foreach (var service in Model)
     {
-        <div class="card" style="width: 30rem;">
-            <img src="@service.ImageUrl" class="card-img-top" alt="@service.Name">
-            <div class="card-body">
-                <h5 class="card-title text-center">@service.Name</h5>
-                <p class="card-text">@service.Description</p>
-                <a asp-controller="Service" asp-action="Details" asp-route-id="@service.Id" class="btn btn-primary">Details about the @service.Name</a>
+        <div class="col-md-5">
+            <div class="card mb-3">
+                <img src="@service.ImageUrl" class="card-img-top" alt="@service.Name">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center">@service.Name</h5>
+                    <p class="card-text">@service.Description</p>
+                    <a asp-controller="Service" asp-action="Details" asp-route-id="@service.Id" class="btn btn-primary">Details about the @service.Name</a>
+                </div>
             </div>
         </div>
     }
