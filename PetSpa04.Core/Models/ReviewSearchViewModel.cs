@@ -8,6 +8,11 @@ namespace PetSpa04.Core.Models
 {
     public class ReviewSearchViewModel
     {
+        public const int ReviewsPerPage = 3;
+
+        public int CurrentPage { get; init; } = 1;
+
+        public int TotalReviews { get; set; }
         public string OneService { get; set; }
         public IEnumerable<string> PickAService { get; set; }
 

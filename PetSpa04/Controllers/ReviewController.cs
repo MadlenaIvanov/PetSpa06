@@ -43,7 +43,11 @@ namespace PetSpa04.Controllers
                 ReviewSorting.DateCreatedDescending or _ => reviewQuery.OrderByDescending(r => r.Id)
             };
 
+            var totalReviews = reviewQuery.Count();
+
             var reviews = reviewQuery
+                .Skip((query.CurrentPage - 1) * ReviewSearchViewModel.ReviewsPerPage)
+                .Take(ReviewSearchViewModel.ReviewsPerPage)
                 .Select(r => new ReviewListingViewModel
                 {
                     Id = r.Id,
@@ -55,6 +59,7 @@ namespace PetSpa04.Controllers
 
             query.PickAService = reviewServices;
             query.Reviews = reviews;
+            query.TotalReviews = totalReviews;
 
             return View(query);
         }
