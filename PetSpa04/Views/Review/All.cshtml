@@ -1,24 +1,50 @@
 ﻿@*@model IEnumerable<ReviewListingViewModel>*@
 @model ReviewSearchViewModel
 
-<div class="row">
 
-    <form method="get">
+<form method="get">
+    <div class="row mb-5">
         <div class="form-group col-md-3">
-            <label asp-for="SearchTerm" class="form-label">Search</label>
-            <input asp-for="SearchTerm" class="form-control" placeholder="Dog, cat, grooming...">
+            <div class="form-group">
+                <label asp-for="OneService" class="form-label">Search by service</label>
+                <select asp-for="OneService" class="form-select">
+                    <option value="">All</option>
+                    @foreach (var service in Model.PickAService)
+                    {
+                        <option value="@service">@service</option>
+                    }
+                </select>
+            </div>
         </div>
-        <br/>
 
-        <div class="form-group col-md-3">          
+        <div class="form-group col-md-3">
+            <label asp-for="SearchTerm" class="form-label">Search by keyword</label>
+            <input asp-for="SearchTerm" class="form-control" placeholder="Dog, cat, best, spa etc...">
+        </div>
+
+
+        <div class="form-group col-md-3">
+            <div class="form-group">
+                <label asp-for="Sorting" class="form-label">Search by service</label>
+                <select asp-for="Sorting" class="form-select">
+                    <option value="0" selected>Date Created Descending</option>
+                    <option value="1">Date Created Ascending</option>
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="form-group col-md-3 text-center">
+            <br />
             <input type="submit" class="btn btn-primary" value="Search">
-@*            //if i wanna remove the button
-            <input type="submit" class="btn btn-primary d-none">*@
+            @*            //if i wanna remove the button
+                <input type="submit" class="btn btn-primary d-none">*@
 
         </div>
-        <br />
-    </form>
-</div>
+    </div>
+</form>
+
 
 <div class="row">
     @foreach (var review in Model.Reviews)

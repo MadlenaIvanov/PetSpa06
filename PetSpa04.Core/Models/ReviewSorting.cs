@@ -8,8 +8,7 @@ namespace PetSpa04.Core.Models
 {
     public enum ReviewSorting
     {
-        DateCreated = 0,
-        WhichTypeOfPet = 1,
-        WhichTypeOfService = 2
+        DateCreatedDescending = 0,
+        DateCreatedAscending = 1
     }
 }

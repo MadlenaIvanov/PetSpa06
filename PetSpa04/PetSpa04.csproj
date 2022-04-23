@@ -24,8 +24,4 @@
     <ProjectReference Include="..\PetSpa04.Core\PetSpa04.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Test\" />
-  </ItemGroup>
-
 </Project>

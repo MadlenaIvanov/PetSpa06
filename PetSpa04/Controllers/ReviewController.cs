@@ -12,37 +12,38 @@ namespace PetSpa04.Controllers
         {
             data = _data;
         }
-        public IActionResult Add() => View(new AddReviewFormModel
-        {
-            Services = this.GetServiceTypes(),
-            TypeOfPet = this.GetPetTypes()
 
-
-        });
-
-
-        public IActionResult All(string searchTerm)
+        public IActionResult All([FromQuery] ReviewSearchViewModel query)
         {
             var reviewQuery = this.data.Reviews.AsQueryable();
 
-            //if (!string.IsNullOrWhiteSpace(searchTerm))
-            //{
-            //    reviewQuery = reviewQuery.Where(r =>
-            //        r.Description.ToLower().Contains(searchTerm.ToLower()) ||
-            //        r.Title.ToLower().Contains(searchTerm.ToLower()));
-            //}
-
-            if (!string.IsNullOrWhiteSpace(searchTerm))
+            if (!string.IsNullOrWhiteSpace(query.OneService))
             {
-                reviewQuery = reviewQuery.Where(s => s.PetType.Name == searchTerm || s.Service.Name == searchTerm ||
-                s.Description.ToLower().Contains(searchTerm.ToLower()) ||
-                s.Title.ToLower().Contains(searchTerm.ToLower()));
+                reviewQuery = reviewQuery.Where(r => r.Service.Name == query.OneService);
             }
 
+            if (!string.IsNullOrWhiteSpace(query.SearchTerm))
+            {
+                reviewQuery = reviewQuery.Where(s => s.PetType.Name == query.SearchTerm || 
+                s.Service.Name == query.SearchTerm ||
+                s.Description.ToLower().Contains(query.SearchTerm.ToLower()) ||
+                s.Title.ToLower().Contains(query.SearchTerm.ToLower()));
+            }
 
+            var reviewServices = this.data
+                .Reviews
+                .Select(r => r.Service.Name)
+                .Distinct()
+                .OrderBy(r => r)
+                .ToList();
+
+            reviewQuery = query.Sorting switch
+            {
+                ReviewSorting.DateCreatedAscending => reviewQuery.OrderBy(r => r.Id),
+                ReviewSorting.DateCreatedDescending or _ => reviewQuery.OrderByDescending(r => r.Id)
+            };
 
             var reviews = reviewQuery
-                .OrderByDescending(r => r.Id)
                 .Select(r => new ReviewListingViewModel
                 {
                     Id = r.Id,
@@ -52,12 +53,17 @@ namespace PetSpa04.Controllers
                     Service = r.Service.Name
                 }).ToList();
 
-            return View(new ReviewSearchViewModel
-            {
-                Reviews = reviews,
-                SearchTerm = searchTerm
-            });
+            query.PickAService = reviewServices;
+            query.Reviews = reviews;
+
+            return View(query);
         }
+
+        public IActionResult Add() => View(new AddReviewFormModel
+        {
+            Services = this.GetServiceTypes(),
+            TypeOfPet = this.GetPetTypes()
+        });
 
         [HttpPost]
         public IActionResult Add(AddReviewFormModel review)
@@ -71,7 +77,6 @@ namespace PetSpa04.Controllers
             {
                 this.ModelState.AddModelError(nameof(review.PetTypeId), "Pet type does not exist!");
             }
-
 
             if (!ModelState.IsValid)
             {
