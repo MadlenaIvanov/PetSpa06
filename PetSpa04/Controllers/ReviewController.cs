@@ -66,11 +66,25 @@ namespace PetSpa04.Controllers
             return View(query);
         }
 
-        //[Authorize]
-        //public IActionResult MyReviews()
-        //{
+        [Authorize]
+        public IActionResult MyReviews()
+        {
+            var reviewQuery = this.data.Reviews.AsQueryable();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        //}
+            var reviews = this.data.Reviews
+                .Where(r => r.UserId == userId)
+                .Select(r => new UserReviewsViewModel
+                {
+                    Id = r.Id,
+                    Title = r.Title,
+                    Description = r.Description,
+                    ImageUrl = r.ImageUrl,
+                    Service = r.Service.Name,
+                }).ToList();
+
+            return View(reviews);
+        }
 
 
 
