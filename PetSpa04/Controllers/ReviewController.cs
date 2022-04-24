@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PetSpa.Infrastructure.Data;
 using PetSpa04.Core.Models;
+using System.Security.Claims;
 
 namespace PetSpa04.Controllers
 {
@@ -64,6 +66,7 @@ namespace PetSpa04.Controllers
             return View(query);
         }
 
+        [Authorize]
         public IActionResult Add() => View(new AddReviewFormModel
         {
             Services = this.GetServiceTypes(),
@@ -71,6 +74,7 @@ namespace PetSpa04.Controllers
         });
 
         [HttpPost]
+        [Authorize]
         public IActionResult Add(AddReviewFormModel review)
         {
             if (!this.data.Services.Any(r => r.Id == review.ServiceId))
@@ -97,7 +101,8 @@ namespace PetSpa04.Controllers
                 Description = review.Description,
                 ImageUrl = review.ImageUrl,
                 ServiceId = review.ServiceId,
-                PetTypeId = review.PetTypeId
+                PetTypeId = review.PetTypeId,
+                UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)
             };
 
             this.data.Reviews.Add(reviewEntry);
