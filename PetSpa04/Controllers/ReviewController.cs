@@ -15,6 +15,13 @@ namespace PetSpa04.Controllers
             data = _data;
         }
 
+        public IActionResult SuccessfulAdd()
+        {
+            return View(); 
+        }
+
+
+
         public IActionResult All([FromQuery] ReviewSearchViewModel query)
         {
             var reviewQuery = this.data.Reviews.AsQueryable();
@@ -72,18 +79,26 @@ namespace PetSpa04.Controllers
             var reviewQuery = this.data.Reviews.AsQueryable();
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var reviews = this.data.Reviews
+            var reviews = reviewQuery
                 .Where(r => r.UserId == userId)
-                .Select(r => new UserReviewsViewModel
+                .Select(r => new ReviewListingViewModel
                 {
                     Id = r.Id,
                     Title = r.Title,
                     Description = r.Description,
                     ImageUrl = r.ImageUrl,
                     Service = r.Service.Name,
+                    
                 }).ToList();
 
-            return View(reviews);
+            var returnModel = new UserReviewsViewModel
+            {
+                UserId = userId,
+                Reviews = reviews
+
+            };
+
+            return View(returnModel);
         }
 
 
@@ -130,7 +145,8 @@ namespace PetSpa04.Controllers
             this.data.Reviews.Add(reviewEntry);
             this.data.SaveChanges();
 
-            return RedirectToAction(nameof(All));
+            //return RedirectToAction(nameof(All));
+            return RedirectToAction(nameof(SuccessfulAdd));
         }
 
         private IEnumerable<ServiceTypesViewModel> GetServiceTypes()

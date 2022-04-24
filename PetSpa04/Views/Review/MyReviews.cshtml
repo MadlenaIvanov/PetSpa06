@@ -2,9 +2,10 @@
 
 
 @{
-    ViewData["Title"] = "All Reviews";
+    ViewData["Title"] = "See all your reviews here!";
 }
 
+<h2 class="heading-margin text-center">@ViewBag.Title</h2>
 <div class="row">
     @foreach (var review in Model.Reviews)
     {
