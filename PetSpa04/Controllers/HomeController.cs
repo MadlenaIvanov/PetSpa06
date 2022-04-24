@@ -21,11 +21,13 @@ namespace PetSpa04.Controllers
 
         public IActionResult Index()
         {
-            var totalReviews = this.data.Reviews.Count(); 
+            var totalReviews = this.data.Reviews.Count();
+            var totalUsers = this.data.Users.Count();
 
             return View(new IndexViewModel
             {
-                TotalReviews = totalReviews
+                TotalReviews = totalReviews,
+                TotalUsers = totalUsers
             });
         }
 

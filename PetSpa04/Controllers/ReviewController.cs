@@ -66,6 +66,14 @@ namespace PetSpa04.Controllers
             return View(query);
         }
 
+        //[Authorize]
+        //public IActionResult MyReviews()
+        //{
+
+        //}
+
+
+
         [Authorize]
         public IActionResult Add() => View(new AddReviewFormModel
         {
