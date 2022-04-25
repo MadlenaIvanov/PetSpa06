@@ -3,10 +3,54 @@
 
 @{
     ViewData["Title"] = "See all your reviews here!";
+    ViewBag.AllowCarEdit = true;
+
 }
 
+@if(Model.Reviews.Count() < 1)
+{
+<div>
+    <center>
+        <img class="logo" src="~/img/cry.png">
+    </center>
+</div>
+
+<div class="text-center">
+    <h2 >You do not have any reviews yet!</h2>
+    <h3 >Why don't you add one.</h3>
+    <a  class="btn btn-primary" asp-area="" asp-controller="Review" asp-action="Add">Write us a review</a>
+</div>
+}
+else
+{
 <h2 class="heading-margin text-center">@ViewBag.Title</h2>
-<div class="row">
+
+    <div class="row">
+    @foreach (var review in Model.Reviews)
+    {
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <img src="@review.ImageUrl" class="card-img-top" width="250" height="300" alt="@review.Title - @review.Service">
+                <div class="card-body">
+                    <h5 class="card-title">@review.Title </h5>
+                    <p class="small text">@review.Service</p>
+                    <p class="card-text">@review.Description</p>
+
+                    <div class="text-center">
+                     @if (ViewBag.AllowCarEdit == true @*|| User.IsAdmin()*@)
+                    {
+                        <a asp-controller="Review" asp-action="Edit" asp-route-id="@review.Id" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Review" asp-action="Delete" asp-route-id="@review.Id" class="btn btn-danger">Delete</a>
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+}
+
+@*<div class="row">
     @foreach (var review in Model.Reviews)
     {
         <div class="col-md-3">
@@ -21,4 +65,4 @@
             </div>
         </div>
     }
-</div>
+</div>*@
