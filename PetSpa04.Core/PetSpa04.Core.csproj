@@ -10,8 +10,4 @@
     <ProjectReference Include="..\PetSpa.Infrastructure\PetSpa.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Pets\" />
-  </ItemGroup>
-
 </Project>

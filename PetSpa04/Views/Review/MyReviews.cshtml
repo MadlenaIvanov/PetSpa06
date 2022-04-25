@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "See all your reviews here!";
-    ViewBag.AllowCarEdit = true;
+    ViewBag.AllowReviewEdit = true;
 
 }
 
@@ -37,7 +37,7 @@ else
                     <p class="card-text">@review.Description</p>
 
                     <div class="text-center">
-                     @if (ViewBag.AllowCarEdit == true @*|| User.IsAdmin()*@)
+                     @if (ViewBag.AllowReviewEdit == true @*|| User.IsAdmin()*@)
                     {
                         <a asp-controller="Review" asp-action="Edit" asp-route-id="@review.Id" class="btn btn-warning">Edit</a>
                         <a asp-controller="Review" asp-action="Delete" asp-route-id="@review.Id" class="btn btn-danger">Delete</a>

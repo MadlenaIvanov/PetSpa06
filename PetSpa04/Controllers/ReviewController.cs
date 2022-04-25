@@ -22,8 +22,6 @@ namespace PetSpa04.Controllers
             return View(); 
         }
 
-
-
         public IActionResult All([FromQuery] ReviewSearchViewModel query)
         {
             var reviewQuery = this.data.Reviews.AsQueryable();

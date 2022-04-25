@@ -1,0 +1,60 @@
+﻿@model UserPetsViewModel
+
+@{
+    ViewData["Title"] = "See all your pets here!";
+    ViewBag.AllowPetEdit = true;
+
+}
+<div class="text-center">
+    <h3>If you want to add a pet click on the button</h3>
+    <a class="btn btn-primary" asp-area="" asp-controller="Pet" asp-action="AddPet">Add a pet</a>
+</div>
+<br/>
+
+@if (Model.Pets.Count() < 1)
+{
+    <div>
+        <center>
+            <img class="logo" src="~/img/cat.png">
+        </center>
+    </div>
+
+    <div class="text-center">
+        <h2>Oh, no it looks like you haven't added any pets yet!</h2>
+        <h3>You'll be able to see all your pets when you add them from the link above.</h3>
+    </div>
+}
+else
+{
+    <h2 class="heading-margin text-center">@ViewBag.Title</h2>
+
+    <table class="table table-danger table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Breed</th>
+                <th scope="col">Age</th>
+                <th scope="col">Weight</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pet in Model.Pets)
+            {
+                <tr>
+                    <td>@pet.Name</td>
+                    <td>@pet.Breed</td>
+                    <td>@pet.Age</td>
+                    <td>@pet.Weight</td>
+
+                    @if (ViewBag.AllowPetEdit == true @*|| User.IsAdmin()*@)
+                    {
+                        <td><a asp-controller="Pet" asp-action="Edit" asp-route-id="@pet.Id" class="btn btn-warning">Edit</a></td>
+                        <td><a asp-controller="Pet" asp-action="Delete" asp-route-id="@pet.Id" class="btn btn-danger">Delete</a></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

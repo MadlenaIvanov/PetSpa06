@@ -69,5 +69,28 @@ namespace PetSpa04.Extentions
 
             data.SaveChanges();
         }
+
+        //seed Locations
+
+        //private static void SeedPetTypesInfo(IServiceProvider services)
+        //{
+        //    var data = services.GetRequiredService<ApplicationDbContext>();
+
+        //    if (data.Locations.Any())
+        //    {
+        //        return;
+        //    }
+
+        //    data.Locations.AddRange(new[]
+        //    {
+        //        new PetType { Name = "Dog" },
+        //        new PetType { Name = "Cat" },
+        //        new PetType { Name = "Bird" },
+        //        new PetType { Name = "Guinea Pig" },
+        //        new PetType { Name = "Other"}
+        //    });
+
+        //    data.SaveChanges();
+        //}
     }
 }
