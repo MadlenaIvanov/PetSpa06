@@ -20,6 +20,7 @@ namespace PetSpa.Infrastructure.Data
         [StringLength(100)]
         public string Address { get; set; }
 
-        //public ICollection<Salon> Salons { get; set; } = new List<Salon>();
+        public IEnumerable<Salon> Salons { get; set; } = new List<Salon>();
+
     }
 }

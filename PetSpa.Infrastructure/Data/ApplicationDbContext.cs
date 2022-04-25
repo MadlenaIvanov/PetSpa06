@@ -16,6 +16,8 @@ namespace PetSpa.Infrastructure.Data
         public DbSet<Service> Services { get; init; }
         public DbSet<PetType> PetTypes { get; init; }
         public DbSet<Pet> Pets { get; init; }
+        public DbSet<Location> Locations { get; init; }
+        public DbSet<Salon> Salons { get; init; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -45,6 +47,14 @@ namespace PetSpa.Infrastructure.Data
                 .HasOne(r => r.User)
                 .WithMany(u => u.Reviews)
                 .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            builder
+                .Entity<Salon>()
+                .HasOne(s => s.Location)
+                .WithMany(l => l.Salons)
+                .HasForeignKey(p => p.LocationId)
                 .OnDelete(DeleteBehavior.Restrict);
 
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetSpa.Infrastructure.Data;
 using PetSpa04.Core.Models;
+using PetSpa04.Core.Models.Reviews;
 using PetSpa04.Models.API.Reviews;
 
 namespace PetSpa04.Controllers.API

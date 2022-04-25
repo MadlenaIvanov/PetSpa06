@@ -1,4 +1,4 @@
-﻿using PetSpa04.Core.Models;
+﻿using PetSpa04.Core.Models.Reviews;
 
 namespace PetSpa04.Models.API.Reviews
 {
