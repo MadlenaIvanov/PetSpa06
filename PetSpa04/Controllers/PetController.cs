@@ -75,5 +75,23 @@ namespace PetSpa04.Controllers
             //return RedirectToAction(nameof(All));
             return RedirectToAction(nameof(MyPets));
         }
+
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var petUserId = this.data.Pets.FirstOrDefault(x => x.UserId == userId);
+
+
+            if (!this.data.Pets.Any(p => p.UserId == userId))
+            {
+                return Unauthorized();
+            }
+
+            var editPet = new PetListingViewModel();
+            var newEdit = editPet.Id == id;
+            return View(newEdit);
+
+        }
     }
 }

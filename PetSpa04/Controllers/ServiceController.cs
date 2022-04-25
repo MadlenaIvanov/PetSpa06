@@ -14,7 +14,6 @@ namespace PetSpa04.Controllers
             data = _data;
         }
 
-
         public IActionResult AllService()
         {
             var services = this.data.Services
@@ -28,6 +27,22 @@ namespace PetSpa04.Controllers
                 }).ToList();
 
             return View(services);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var detailsForService = this.data.Services
+                .Where(s => s.Id == id)
+                .Select(s => new ServiceListingViewModel
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Description = s.Description,
+                    ImageUrl = s.ImageUrl
+                })
+                .FirstOrDefault();
+
+            return View(detailsForService);
         }
     }
 }

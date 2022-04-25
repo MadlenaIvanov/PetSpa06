@@ -1,0 +1,19 @@
+﻿@model ServiceListingViewModel
+
+
+@{
+    ViewData["Title"] = "Details about the serivce!";
+}
+
+
+<div class="row">
+    <h2 class="heading-margin text-center">@ViewBag.Title</h2>
+
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <p class="card-text">@Model.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
