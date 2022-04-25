@@ -8,12 +8,14 @@
 
 <div class="row">
     <h2 class="heading-margin text-center">@ViewBag.Title</h2>
-
+    <center>
     <div class="col-md-6">
         <div class="card mb-3">
             <div class="card-body text-center">
+                <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Name">
                 <p class="card-text">@Model.Description</p>
             </div>
         </div>
     </div>
+    </center>
 </div>

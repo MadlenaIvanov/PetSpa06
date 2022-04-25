@@ -76,22 +76,40 @@ namespace PetSpa04.Controllers
             return RedirectToAction(nameof(MyPets));
         }
 
-        [Authorize]
-        public IActionResult Edit(int id)
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //var petUserId = this.data.Pets.FirstOrDefault(x => x.UserId == userId);
+        //[Authorize]
+        //public IActionResult Edit(int id)
+        //{
+            
+        //    //var petUserId = this.data.Pets.FirstOrDefault(x => x.UserId == userId);
 
 
-            if (!this.data.Pets.Any(p => p.UserId == userId))
-            {
-                return Unauthorized();
-            }
+        //    if (!this.data.Pets.Any(p => p.UserId == userId))
+        //    {
+        //        return Unauthorized();
+        //    }
 
-            var editPet = new PetListingViewModel();
-            var newEdit = editPet.Id == id;
-            return View(newEdit);
+        //    var edit = this.data.Pets
+        //        .Where(p => p.Id == id)
+        //        .Select(e => new AddPetFormModel
+        //        {
+        //            Name = e.Name,
+        //            Age = e.Age,
+        //            Breed = e.Breed,
+        //            Weight = e.Weight
+        //        }).ToList();
 
-        }
+        //    return View(edit);
+
+        //}
+
+        //[HttpPost]
+        //[Authorize]
+
+        //public IActionResult Edit(int id, AddPetFormModel pet)
+        //{
+        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+           
+        //}
     }
 }
