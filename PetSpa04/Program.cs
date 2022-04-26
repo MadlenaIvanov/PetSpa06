@@ -2,7 +2,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PetSpa.Infrastructure.Data;
+using PetSpa.Infrastructure.Data.Common;
+using PetSpa.Infrastructure.Data.Repositories;
 using PetSpa.Infrastructure.Identity;
+using PetSpa04.Core.Contracts;
+using PetSpa04.Core.Services;
 using PetSpa04.Extentions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,12 +24,18 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     options.SignIn.RequireConfirmedAccount = true;
     options.Password.RequireDigit = true;
 })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews(options =>
 {
     options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
 });
+
+//builder.Services.AddScoped<IRepository, Repository>();
+builder.Services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 
 var app = builder.Build();
 
