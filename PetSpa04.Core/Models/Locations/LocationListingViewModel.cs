@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace PetSpa04.Core.Models.Locations
 {
-    internal class AllLocation
+    public class LocationListingViewModel
     {
+        public int Id { get; init; }
+
+        public string LocationTown { get; init; }
+
+        public string Address { get; init; }
     }
 }
