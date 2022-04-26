@@ -15,6 +15,7 @@ namespace PetSpa04.Extentions
 
             SeedServicesInfo(services);
             SeedPetTypesInfo(services);
+            SeedLocationsInfo(services);
             //SeedAdministrator(services);
 
             return app;
@@ -72,25 +73,24 @@ namespace PetSpa04.Extentions
 
         //seed Locations
 
-        //private static void SeedPetTypesInfo(IServiceProvider services)
-        //{
-        //    var data = services.GetRequiredService<ApplicationDbContext>();
+        private static void SeedLocationsInfo(IServiceProvider services)
+        {
+            var data = services.GetRequiredService<ApplicationDbContext>();
 
-        //    if (data.Locations.Any())
-        //    {
-        //        return;
-        //    }
+            if (data.Locations.Any())
+            {
+                return;
+            }
 
-        //    data.Locations.AddRange(new[]
-        //    {
-        //        new PetType { Name = "Dog" },
-        //        new PetType { Name = "Cat" },
-        //        new PetType { Name = "Bird" },
-        //        new PetType { Name = "Guinea Pig" },
-        //        new PetType { Name = "Other"}
-        //    });
+            data.Locations.AddRange(new[]
+            {
+                new Location { LocationTown = "Sofia", Address = "Crow's view 193" },
+                new Location { LocationTown = "Varna", Address = "Seagull's corner 943" },
+                new Location { LocationTown = "Plovdiv", Address = "Old town center 329" },
+                new Location { LocationTown = "Burgas", Address = "Cobblestone path 123" }
+            });
 
-        //    data.SaveChanges();
-        //}
+            data.SaveChanges();
+        }
     }
 }
