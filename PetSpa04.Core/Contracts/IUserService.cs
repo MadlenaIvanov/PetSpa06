@@ -10,5 +10,7 @@ namespace PetSpa04.Core.Contracts
     public interface IUserService
     {
         Task<IEnumerable<UserListViewModel>> GetUsers();
+
+        Task<UserEditViewModel> GetUserForEdit(string id);
     }
 }

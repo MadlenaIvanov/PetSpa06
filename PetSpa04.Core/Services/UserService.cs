@@ -33,5 +33,19 @@ namespace PetSpa04.Core.Services
                 })
                 .ToListAsync();
         }
+
+        public async Task<UserEditViewModel> GetUserForEdit(string id)
+        {
+            var user = await repo.GetByIdAsync<ApplicationUser>(id);
+
+            var theUser = new UserEditViewModel()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+
+            return theUser;
+        }
     }
 }

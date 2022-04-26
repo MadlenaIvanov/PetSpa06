@@ -47,5 +47,13 @@ namespace PetSpa04.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> Edit(string Id)
+        {
+            var model = await service.GetUserForEdit(Id);
+
+            return View(model);
+        }
+
     }
 }
