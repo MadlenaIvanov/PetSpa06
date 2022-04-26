@@ -47,5 +47,27 @@ namespace PetSpa04.Core.Services
 
             return theUser;
         }
+
+        public async Task<bool> UpdateUser(UserEditViewModel model)
+        {
+            bool result = false;
+            var user = await repo.GetByIdAsync<ApplicationUser>(model.Id);
+
+            if (user != null)
+            {
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+
+                await repo.SaveChangesAsync();
+                result = true;
+            }
+
+            return result;
+        }
+
+        public async Task<ApplicationUser> GetUserById(string id)
+        {
+            return await repo.GetByIdAsync<ApplicationUser>(id);
+        }
     }
 }
