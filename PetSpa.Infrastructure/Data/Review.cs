@@ -29,7 +29,6 @@ namespace PetSpa.Infrastructure.Data
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; init; }
 
-        //-
         public int ServiceId { get; set; }
         public Service Service { get; init; }
 

@@ -29,5 +29,7 @@ namespace PetSpa.Infrastructure.Data
 
         public int LocationId { get; set; }
         public Location Location { get; init; }
+
+        public IEnumerable<Appointment> Appointments { get; set; } = new List<Appointment>();
     }
 }

@@ -15,5 +15,7 @@ namespace PetSpa.Infrastructure.Identity
 
         public IEnumerable<Pet> Pets { get; init; } = new List<Pet>();
         public IEnumerable<Review> Reviews { get; init; } = new List<Review>();
+        public IEnumerable<Appointment> Appointments { get; set; } = new List<Appointment>();
+
     }
 }

@@ -18,6 +18,7 @@ namespace PetSpa.Infrastructure.Data
         public DbSet<Pet> Pets { get; init; }
         public DbSet<Location> Locations { get; init; }
         public DbSet<Salon> Salons { get; init; }
+        public DbSet<Appointment> Appointments { get; init; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -56,6 +57,28 @@ namespace PetSpa.Infrastructure.Data
                 .WithMany(l => l.Salons)
                 .HasForeignKey(p => p.LocationId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Appointment>()
+                .HasOne(a => a.Pet)
+                .WithMany(p => p.Appointments)
+                .HasForeignKey(a => a.PetId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Appointment>()
+                .HasOne(a => a.User)
+                .WithMany(u => u.Appointments)
+                .HasForeignKey(a => a.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Appointment>()
+                .HasOne(a => a.Salon)
+                .WithMany(s => s.Appointments)
+                .HasForeignKey(a => a.SalonId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
 
             base.OnModelCreating(builder);

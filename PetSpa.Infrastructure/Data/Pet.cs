@@ -32,5 +32,7 @@ namespace PetSpa.Infrastructure.Data
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; init; }
+
+        public IEnumerable<Appointment> Appointments { get; set; } = new List<Appointment>();
     }
 }
