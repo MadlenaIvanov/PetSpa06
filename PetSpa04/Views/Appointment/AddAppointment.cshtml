@@ -1,0 +1,68 @@
+﻿@model AddAppointmentFormModel
+
+@{
+    ViewData["Title"] = "Add your appointment here!";
+}
+
+<div calss="container">
+    <div class="row">
+        <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+            <h2 class="heading-margin text-center">@ViewBag.Title</h2>
+
+
+                    <div class="container">
+            <div class="content text-justify">
+                <h5 class="text-bold">Information about our appointments</h5>
+                </br>
+
+                <div class="text">
+                    <p>Appointments can be placed any time during the day. Our salons are open 24/7.</p>
+                    <p>You need to have a pet listed in our system.</p>
+                    <p>If you do not have a pet listed after hitting the Submit Appointment button you will be redirected to our "Add a Pet page".</p>
+                    <p>After submitting an appointment you will not be able to edit or delete it.</p>            
+                </div>
+                </br>
+            </div>
+        </div>
+
+
+
+
+
+            <form method="post">
+
+                <div class="form-group">
+                    <label asp-for="Date" class="form-label"></label>
+                    <input asp-for="Date" type="datetime-local" class="form-control">
+                    <span asp-validation-for="Date" class="small text-danger"></span>
+                </div>
+                </br>
+
+                <div class="form-floating">
+                    <select asp-for="SalonId" class="form-select" style="margin-top:1%">
+                        @foreach (var salon in Model.Salons)
+                        {
+                            <option value="@salon.Id">@salon.Name</option>
+                        }
+                    </select>
+                    <label asp-for="SalonId">Pick the service</label>
+                    <span asp-validation-for="SalonId" class="small text-danger"></span>
+                </div>
+
+                <div class="form-floating">
+                    <select asp-for="PetId" class="form-select" style="margin-top:1%">
+                        @foreach (var pet in Model.Pets)
+                        {
+                            <option value="@pet.Id">@pet.Name</option>
+                        }
+                    </select>
+                    <label asp-for="PetId"></label>
+                    <span asp-validation-for="PetId" class="small text-danger"></span>
+                </div>
+
+
+                <input class="btn btn-primary mt-3" type="submit" value="Submit Appointment" />
+            </form>
+        </div>
+    </div>
+</div>
