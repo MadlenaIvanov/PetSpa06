@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ServiceListingViewModel>
+
+    
+@{
+    ViewData["Title"] = "Browse through our services!";
+}
+
+
+<div class="row">
+   <h2 class="heading-margin text-center">@ViewBag.Title</h2>
+
+    @foreach (var service in Model)
+    {
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <img src="@service.ImageUrl" class="card-img-top" alt="@service.Name">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center">@service.Name</h5>
+                    @*<p class="card-text">@service.Description</p>*@
+                    <a asp-controller="Service" asp-action="Details" asp-route-id="@service.Id" class="btn btn-primary">Details about the @service.Name</a>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+</div>

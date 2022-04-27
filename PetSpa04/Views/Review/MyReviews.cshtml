@@ -39,7 +39,6 @@ else
                     <div class="text-center">
                      @if (ViewBag.AllowReviewEdit == true @*|| User.IsAdmin()*@)
                     {
-                        <a asp-controller="Review" asp-action="Edit" asp-route-id="@review.Id" class="btn btn-warning">Edit</a>
                         <a asp-controller="Review" asp-action="Delete" asp-route-id="@review.Id" class="btn btn-danger">Delete</a>
                     }
                     </div>

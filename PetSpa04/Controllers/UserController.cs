@@ -13,11 +13,11 @@ namespace PetSpa04.Controllers
         private readonly IUserService service;
 
         public UserController(
-            RoleManager<IdentityRole> _roleManager,
-            IUserService _service)
+            RoleManager<IdentityRole> roleManager,
+            IUserService service)
         {
-            roleManager = _roleManager;
-            service = _service;
+            this.roleManager = roleManager;
+            this.service = service;
         }
 
         public IActionResult Index()
