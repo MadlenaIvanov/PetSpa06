@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PetSpa.Infrastructure.Data;
+using PetSpa04.Core.Constants;
 using PetSpa04.Core.Models.Pets;
 using System.Security.Claims;
 
@@ -76,40 +77,64 @@ namespace PetSpa04.Controllers
             return RedirectToAction(nameof(MyPets));
         }
 
-        //[Authorize]
-        //public IActionResult Edit(int id)
-        //{
-            
-        //    //var petUserId = this.data.Pets.FirstOrDefault(x => x.UserId == userId);
+        public IActionResult Edit(int id)
+        {
+            var model = this.GetPetForEdit(id);
 
+            return View(model);
+        }
 
-        //    if (!this.data.Pets.Any(p => p.UserId == userId))
-        //    {
-        //        return Unauthorized();
-        //    }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit(AddPetFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-        //    var edit = this.data.Pets
-        //        .Where(p => p.Id == id)
-        //        .Select(e => new AddPetFormModel
-        //        {
-        //            Name = e.Name,
-        //            Age = e.Age,
-        //            Breed = e.Breed,
-        //            Weight = e.Weight
-        //        }).ToList();
+            if (UpdatePet(model))
+            {
+                ViewData[MessageConstants.SuccessMessage] = "Успешен запис!";
+            }
+            else
+            {
+                ViewData[MessageConstants.ErrorMessage] = "Грешка!";
+            }
 
-        //    return View(edit);
+            return RedirectToAction(nameof(MyPets));
+        }
 
-        //}
+        public bool UpdatePet(AddPetFormModel model)
+        {
+            bool result = false;
+            var pet = this.data.Pets.Find(model.Id);
 
-        //[HttpPost]
-        //[Authorize]
+            if (pet != null)
+            {
+                pet.Name = model.Name;
+                pet.Breed = model.Breed;
+                pet.Age = model.Age;
+                pet.Weight = model.Weight;
 
-        //public IActionResult Edit(int id, AddPetFormModel pet)
-        //{
-        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                this.data.SaveChanges();
+                result = true;
+            }
 
-           
-        //}
+            return result;
+        }
+
+        public AddPetFormModel GetPetForEdit(int id)
+        {
+            var pet = this.data.Pets.Find(id);
+
+            return new AddPetFormModel()
+            {
+                Name = pet.Name,
+                Breed = pet.Breed,
+                Age = pet.Age,
+                Weight = pet.Weight
+            };
+        }
     }
 }

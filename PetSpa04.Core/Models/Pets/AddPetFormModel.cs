@@ -9,6 +9,7 @@ namespace PetSpa04.Core.Models.Pets
 {
     public class AddPetFormModel
     {
+        public int Id { get; init; }
 
         [Required]
         [StringLength(100, MinimumLength = 2)]
