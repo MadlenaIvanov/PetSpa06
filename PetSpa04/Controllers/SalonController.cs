@@ -1,12 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PetSpa.Infrastructure.Data;
+using PetSpa04.Core.Models.Salons;
 
 namespace PetSpa04.Controllers
 {
     public class SalonController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext data;
+        public SalonController(ApplicationDbContext data)
         {
-            return View();
+            this.data = data;
+
+        }
+
+        public IActionResult AllSalons()
+        {
+
+            var salons = this.data.Salons
+                .OrderBy(s => s.Id)
+                .Select(s => new SalonListingViewModel
+                {
+                    Id = s.Id,
+                    City = s.City,
+                    Description = s.Description,
+                    Image = s.Image,
+                    NameOfSalon = s.NameOfSalon
+
+                }).ToList();
+
+            return View(salons);
         }
     }
 }

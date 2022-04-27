@@ -52,7 +52,6 @@ namespace PetSpa04.Areas.Admin.Controllers
             this.data.Salons.Add(salonEntry);
             this.data.SaveChanges();
 
-            //return RedirectToAction(nameof(All));
             return RedirectToAction(nameof(AddSalon));
         }
 

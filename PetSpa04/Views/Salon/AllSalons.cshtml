@@ -1,23 +1,24 @@
-﻿@model IEnumerable<ServiceListingViewModel>
+﻿@model IEnumerable<SalonListingViewModel>
 
     
 @{
-    ViewData["Title"] = "Browse through our services!";
+    ViewData["Title"] = "See all our salons!";
 }
 
 
 <div class="row">
    <h2 class="heading-margin text-center">@ViewBag.Title</h2>
 
-    @foreach (var service in Model)
+    @foreach (var salon in Model)
     {
         <div class="col-md-6">
             <div class="card mb-3">
-                <img src="@service.ImageUrl" class="card-img-top" alt="@service.Name">
+                <img src="@salon.Image" class="card-img-top" alt="@salon.NameOfSalon">
                 <div class="card-body text-center">
-                    <h5 class="card-title text-center">@service.Name</h5>
-                    @*<p class="card-text">@service.Description</p>*@
-                    <a asp-controller="Service" asp-action="Details" asp-route-id="@service.Id" class="btn btn-primary">Details about the @service.Name</a>
+                    <h5 class="card-title text-center">@salon.NameOfSalon</h5>
+                    <p class="small text">@salon.City</p>
+                    <p class="card-text">@salon.Description</p>
+                    
                 </div>
             </div>
         </div>
