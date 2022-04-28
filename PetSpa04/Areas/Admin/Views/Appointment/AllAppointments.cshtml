@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AppointmentListingViewModel>
+
+@{
+    ViewData["Title"] = "All made appointments";
+    ViewBag.AllowPetEdit = true;
+
+}
+
+<h2 class="heading-margin text-center">@ViewBag.Title</h2>
+
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Salon</th>
+            <th scope="col">Pet</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var app in Model)
+        {
+            <tr>
+                <td>@app.Id</td>
+                <td>@app.User</td>
+                <td>@app.Salon</td>
+                <td>@app.Pet</td>
+
+                <td><a asp-controller="Appointment" asp-action="Delete" class="btn btn-danger">Delete</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>

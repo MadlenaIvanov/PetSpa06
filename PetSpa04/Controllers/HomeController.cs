@@ -8,14 +8,11 @@ namespace PetSpa04.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> logger;
         private readonly ApplicationDbContext data;
 
 
-        public HomeController(ILogger<HomeController> _logger,
-         ApplicationDbContext _data)
+        public HomeController(ApplicationDbContext _data)
         {
-            logger = _logger;
             data = _data;
         }
 
@@ -23,11 +20,13 @@ namespace PetSpa04.Controllers
         {
             var totalReviews = this.data.Reviews.Count();
             var totalUsers = this.data.Users.Count();
+            var totalAppointments = this.data.Appointments.Count();
 
             return View(new IndexViewModel
             {
                 TotalReviews = totalReviews,
-                TotalUsers = totalUsers
+                TotalUsers = totalUsers,
+                TotalAppointments = totalAppointments
             });
         }
 

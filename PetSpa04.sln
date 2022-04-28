@@ -8,12 +8,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetSpa04", "PetSpa04\PetSpa
 		{2CC9ADD7-A37D-4EA6-AE33-C200B8EFEFAE} = {2CC9ADD7-A37D-4EA6-AE33-C200B8EFEFAE}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSpa04.Core", "PetSpa04.Core\PetSpa04.Core.csproj", "{2CC9ADD7-A37D-4EA6-AE33-C200B8EFEFAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetSpa04.Core", "PetSpa04.Core\PetSpa04.Core.csproj", "{2CC9ADD7-A37D-4EA6-AE33-C200B8EFEFAE}"
 	ProjectSection(ProjectDependencies) = postProject
 		{245B1183-7715-4B04-9778-E5EA5DDAFD4F} = {245B1183-7715-4B04-9778-E5EA5DDAFD4F}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSpa.Infrastructure", "PetSpa.Infrastructure\PetSpa.Infrastructure.csproj", "{245B1183-7715-4B04-9778-E5EA5DDAFD4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetSpa.Infrastructure", "PetSpa.Infrastructure\PetSpa.Infrastructure.csproj", "{245B1183-7715-4B04-9778-E5EA5DDAFD4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSpa.Tests", "PetSpa.Tests\PetSpa.Tests.csproj", "{A8D871B8-83B3-46CC-AB3B-8298B783B6BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{245B1183-7715-4B04-9778-E5EA5DDAFD4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{245B1183-7715-4B04-9778-E5EA5DDAFD4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{245B1183-7715-4B04-9778-E5EA5DDAFD4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8D871B8-83B3-46CC-AB3B-8298B783B6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8D871B8-83B3-46CC-AB3B-8298B783B6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8D871B8-83B3-46CC-AB3B-8298B783B6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8D871B8-83B3-46CC-AB3B-8298B783B6BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -23,11 +23,12 @@ namespace PetSpa04.Controllers.API
         {
             var totalReviews = this.data.Reviews.Count();
             var totalUsers = this.data.Users.Count();
+            var totalAppointments = this.data.Appointments.Count();
 
             var statistics = new StatisticsResponseModel
             {
                 TotalReviews = totalReviews,
-                TotalAppointments = 0,
+                TotalAppointments = totalAppointments,
                 TotalUsers = totalUsers
             };
 

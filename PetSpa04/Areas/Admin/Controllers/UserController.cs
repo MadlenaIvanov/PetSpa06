@@ -30,20 +30,8 @@ namespace PetSpa04.Areas.Admin.Controllers
         {
             var users = await service.GetUsers();
 
-            //return Ok(users);
             return View(users);
         }
-
-        //public async Task<IActionResult> CreateRole()
-        //{
-        //    // --> UnComment only when need to create new role <--
-        //    //await roleManager.CreateAsync(new IdentityRole()
-        //    //{
-        //    //    Name = "Administrator"
-        //    //});
-
-        //    //return Ok();
-        //}
 
         public IActionResult Index()
         {
