@@ -23,7 +23,7 @@ namespace PetSpa04.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var pets = petQuery
-                .Where(p => p.UserId == userId)
+                .Where(p => p.UserId == userId && p.IsPublic == true)
                 .Select(p => new PetListingViewModel
                 {
                     Id = p.Id,
@@ -67,7 +67,8 @@ namespace PetSpa04.Controllers
                 Age = pet.Age,
                 Breed = pet.Breed,
                 Weight = pet.Weight,
-                UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)
+                UserId = User.FindFirstValue(ClaimTypes.NameIdentifier),
+                IsPublic = true
             };
 
             this.data.Pets.Add(petEntry);
@@ -135,6 +136,17 @@ namespace PetSpa04.Controllers
                 Age = pet.Age,
                 Weight = pet.Weight
             };
+        }
+
+        public IActionResult ChangeVisibility(int id)
+        {
+            var pet = this.data.Pets.Find(id);
+
+            pet.IsPublic = !pet.IsPublic;
+
+            this.data.SaveChanges();
+
+            return RedirectToAction(nameof(MyPets));
         }
     }
 }

@@ -27,7 +27,7 @@
                 <td>@app.Salon</td>
                 <td>@app.Pet</td>
 
-                <td><a asp-controller="Appointment" asp-action="Delete" class="btn btn-danger">Delete</a></td>
+                <td><a asp-area="Admin" asp-controller="Appointment" asp-action="ChangeVisibility" asp-route-id="@app.Id" class="btn btn-danger float-right ml-3">Remove</a></td>
 
             </tr>
         }

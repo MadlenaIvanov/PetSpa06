@@ -16,6 +16,7 @@ namespace PetSpa04.Areas.Admin.Controllers
         {
             var appointments = this.data.Appointments
                 .OrderBy(a => a.Id)
+                .Where(a => a.IsPublic == true)
                 .Select(a => new AppointmentListingViewModel
                 {
                     Id = a.Id,
@@ -26,5 +27,17 @@ namespace PetSpa04.Areas.Admin.Controllers
 
             return View(appointments);
         }
+
+        public IActionResult ChangeVisibility(int id)
+        {
+            var appointment = this.data.Appointments.Find(id);
+
+            appointment.IsPublic = !appointment.IsPublic;
+
+            this.data.SaveChanges();
+
+            return RedirectToAction(nameof(AllAppointments));
+        }
+
     }
 }

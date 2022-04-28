@@ -80,7 +80,8 @@ namespace PetSpa04.Controllers
                 Date = dateTime,
                 PetId = appointment.PetId,
                 SalonId = appointment.SalonId,
-                UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)
+                UserId = User.FindFirstValue(ClaimTypes.NameIdentifier),
+                IsPublic = true
             };
 
             this.data.Appointments.Add(appointmentEntry);

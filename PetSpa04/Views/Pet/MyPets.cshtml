@@ -51,7 +51,7 @@ else
                     @if (ViewBag.AllowPetEdit == true @*|| User.IsAdmin()*@)
                     {
                         <td><a asp-controller="Pet" asp-action="Edit" asp-route-id="@pet.Id" class="btn btn-warning">Edit</a></td>
-                        <td><a asp-controller="Pet" asp-action="Delete" asp-route-id="@pet.Id" class="btn btn-danger">Delete</a></td>
+                        <td><a asp-area="" asp-controller="Pet" asp-action="ChangeVisibility" asp-route-id="@pet.Id" class="btn btn-danger float-right ml-3">Remove</a></td>
                     }
                 </tr>
             }
