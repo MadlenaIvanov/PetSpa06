@@ -16,7 +16,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title text-center">@location.LocationTown</h5>
                     <p class="card-text">@location.Address</p>
-                    
+                    <a asp-area="" asp-controller="Salon" asp-action="AllSalons" asp-route-ByLocation="@location.LocationTown" class="btn btn-primary">See all salons in @location.LocationTown</a>
                 </div>
             </div>
         </div>

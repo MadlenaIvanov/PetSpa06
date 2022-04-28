@@ -13,10 +13,16 @@ namespace PetSpa04.Controllers
 
         }
 
-        public IActionResult AllSalons()
+        public IActionResult AllSalons([FromQuery] SalonSearchViewModel query)
         {
+            var salonQuery = this.data.Salons.AsQueryable();
 
-            var salons = this.data.Salons
+            if (!string.IsNullOrWhiteSpace(query.ByLocation))
+            {
+                salonQuery = salonQuery.Where(r => r.City == query.ByLocation);
+            }
+
+            var salons = salonQuery
                 .OrderBy(s => s.Id)
                 .Select(s => new SalonListingViewModel
                 {
@@ -28,7 +34,9 @@ namespace PetSpa04.Controllers
 
                 }).ToList();
 
-            return View(salons);
+            query.Salons = salons;
+
+            return View(query);
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿@model IEnumerable<SalonListingViewModel>
-
+﻿@*@model IEnumerable<SalonListingViewModel>*@
+@model SalonSearchViewModel
     
 @{
     ViewData["Title"] = "See all our salons!";
@@ -9,7 +9,7 @@
 <div class="row">
    <h2 class="heading-margin text-center">@ViewBag.Title</h2>
 
-    @foreach (var salon in Model)
+    @foreach (var salon in Model.Salons)
     {
         <div class="col-md-6">
             <div class="card mb-3">

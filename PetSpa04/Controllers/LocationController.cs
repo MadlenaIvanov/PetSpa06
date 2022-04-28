@@ -21,6 +21,9 @@ namespace PetSpa04.Controllers
 
         public IActionResult AllLocation()
         {
+
+
+
             var locations = this.data.Locations
                 .OrderBy(l => l.Id)
                 .Select(l => new LocationListingViewModel
