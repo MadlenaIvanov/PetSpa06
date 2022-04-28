@@ -34,5 +34,8 @@ namespace PetSpa.Infrastructure.Data
 
         public int PetTypeId { get; set; }
         public PetType PetType { get; init; }
+
+        public bool IsPublic { get; set; }
+
     }
 }

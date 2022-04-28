@@ -33,6 +33,8 @@ namespace PetSpa.Infrastructure.Data
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; init; }
 
+        public bool IsPublic { get; set; }
+
         public IEnumerable<Appointment> Appointments { get; set; } = new List<Appointment>();
     }
 }

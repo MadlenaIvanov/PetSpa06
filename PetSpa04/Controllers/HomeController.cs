@@ -3,6 +3,7 @@ using PetSpa.Infrastructure.Data;
 using PetSpa04.Models;
 using System.Diagnostics;
 using PetSpa04.Core.Models;
+using PetSpa04.Core.Constants;
 
 namespace PetSpa04.Controllers
 {
@@ -18,6 +19,10 @@ namespace PetSpa04.Controllers
 
         public IActionResult Index()
         {
+            //ViewData[MessageConstants.ErrorMessage] = "Грешка!";
+            //ViewData[MessageConstants.WarningMessage] = "Внимавай!";
+            ViewData[MessageConstants.SuccessMessage] = "Everything works ok!";
+
             var totalReviews = this.data.Reviews.Count();
             var totalUsers = this.data.Users.Count();
             var totalAppointments = this.data.Appointments.Count();
