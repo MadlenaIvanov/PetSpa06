@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetSpa.Infrastructure.Data;
+using PetSpa04.Core.Constants;
 using PetSpa04.Core.Models.Salons;
 using PetSpa04.Core.Models.Services;
 
@@ -27,6 +28,7 @@ namespace PetSpa04.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddSalon(AddSalonFormModel salon)
         {
+
             if (!this.data.Locations.Any(l => l.Id == salon.LocationId))
             {
                 this.ModelState.AddModelError(nameof(salon.LocationId), "Location does not exist!");

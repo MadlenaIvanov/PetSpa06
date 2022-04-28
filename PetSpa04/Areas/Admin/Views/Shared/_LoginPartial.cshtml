@@ -7,12 +7,12 @@
     @if (SignInManager.IsSignedIn(User))
     {
 
-        <li class="nav-item">
+@*        <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Pet" asp-action="MyPets">My Pets</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Review" asp-action="MyReviews">My Reviews</a>
-        </li>
+        </li>*@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 @User.Identity?.Name
@@ -22,10 +22,9 @@
                 {
                     <u>
                         <center>
-                            <li><a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin Area</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Go back</a></li>
                         </center>
                     </u>
-
                     <li><hr class="dropdown-divider"></li>
                 }
 

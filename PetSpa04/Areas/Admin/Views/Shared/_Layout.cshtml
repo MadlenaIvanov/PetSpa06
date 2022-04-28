@@ -21,22 +21,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Service" asp-action="AllService">Services</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="User" asp-action="ManageUsers">Manage Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Salon" asp-action="AllSalons">Salons</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Appointment" asp-action="AllAppointments">All Appointments</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Location" asp-action="AllLocation">Our Locations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="AddAppointment">Set an Appointment</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Review" asp-action="All">See our Reviews</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Review" asp-action="Add">Add a Review</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Salon" asp-action="AddSalon">Add a Salon</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />

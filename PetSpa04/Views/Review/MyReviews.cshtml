@@ -36,32 +36,15 @@ else
                     <p class="small text">@review.Service</p>
                     <p class="card-text">@review.Description</p>
 
-                    <div class="text-center">
-                     @if (ViewBag.AllowReviewEdit == true @*|| User.IsAdmin()*@)
+@*                    <div class="text-center">
+                     @if (ViewBag.AllowReviewEdit == true)
                     {
                         <a asp-controller="Review" asp-action="Delete" asp-route-id="@review.Id" class="btn btn-danger">Delete</a>
                     }
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
     }
 </div>
 }
-
-@*<div class="row">
-    @foreach (var review in Model.Reviews)
-    {
-        <div class="col-md-3">
-            <div class="card mb-3">
-                <img src="@review.ImageUrl" class="card-img-top" width="250" height="300" alt="@review.Title - @review.Service">
-                <div class="card-body">
-                    <h5 class="card-title">@review.Title </h5>
-                    <p class="small text">@review.Service</p>
-                    <p class="card-text">@review.Description</p>
-
-                </div>
-            </div>
-        </div>
-    }
-</div>*@
