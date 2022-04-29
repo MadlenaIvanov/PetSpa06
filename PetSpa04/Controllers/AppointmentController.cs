@@ -90,6 +90,37 @@ namespace PetSpa04.Controllers
             return RedirectToAction(nameof(SuccessfulAppointment));
         }
 
+        [Authorize]
+        public IActionResult MyAppointment()
+        {
+            var appointmentQuery = this.data.Appointments.AsQueryable();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var appointment = appointmentQuery
+                .Where(a => a.UserId == userId)
+                .Select(a => new AppointmentListingViewModel
+                {
+                    Pet = a.Pet.Name,
+                    Salon = a.Salon.NameOfSalon,
+                    Id = a.Id,
+                    User = a.User.Id
+
+
+                }).ToList();
+
+            var returnModel = new UserAppointmentViewModel
+            {
+                UserId = userId,
+                Appointments = appointment
+
+            };
+
+            return View(returnModel);
+        }
+
+
+
+
         private IEnumerable<ServiceTypesViewModel> GetSalonTypes()
             => this.data
             .Salons

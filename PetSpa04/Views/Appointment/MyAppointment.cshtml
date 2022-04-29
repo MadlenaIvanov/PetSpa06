@@ -1,0 +1,42 @@
+﻿@model UserAppointmentViewModel
+
+@{
+    ViewData["Title"] = "See all your appointments here!";
+
+}
+
+@if (Model.Appointments.Count() < 1)
+{
+    <div>
+        <center>
+            <img class="logo" src="~/img/dog.png">
+        </center>
+    </div>
+
+    <div class="text-center">
+        <h2>It looks like you don't have any appointments yet!</h2>
+    </div>
+}
+else
+{
+    <h2 class="heading-margin text-center">@ViewBag.Title</h2>
+
+    <table class="table table-danger table-striped table-sm">
+        <thead>
+            <tr>
+                <th scope="col">Pet</th>
+                <th scope="col">Salon</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var app in Model.Appointments)
+            {
+                <tr>
+                    <td>@app.Pet</td>
+                    <td>@app.Salon</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
