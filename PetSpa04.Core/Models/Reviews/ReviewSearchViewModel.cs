@@ -2,7 +2,7 @@
 {
     public class ReviewSearchViewModel
     {
-        public const int ReviewsPerPage = 3;
+        public const int ReviewsPerPage = 4;
 
         public int CurrentPage { get; init; } = 1;
 
